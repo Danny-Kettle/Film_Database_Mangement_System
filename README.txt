@@ -1,0 +1,1 @@
+Run the film restful service, then open the client, the open Terminal and enter NPM start

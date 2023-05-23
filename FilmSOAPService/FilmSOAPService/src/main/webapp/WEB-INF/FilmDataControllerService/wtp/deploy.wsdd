@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from FilmDataControllerService WSDL service -->
+
+  <service name="FilmDataController" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://wtp"/>
+      <parameter name="wsdlServiceElement" value="FilmDataControllerService"/>
+      <parameter name="schemaQualified" value="http://wtp"/>
+      <parameter name="wsdlServicePort" value="FilmDataController"/>
+      <parameter name="className" value="wtp.FilmDataController"/>
+      <parameter name="wsdlPortType" value="FilmDataController"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://wtp" xmlns:retNS="http://wtp" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addFilmData" qname="operNS:addFilmData" returnQName="retNS:addFilmDataReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:title" type="tns:string"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:year" type="tns:int"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:director" type="tns:string"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:stars" type="tns:string"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:review" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://wtp" xmlns:retNS="http://wtp" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteFilmData" qname="operNS:deleteFilmData" returnQName="retNS:deleteFilmDataReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://wtp" xmlns:retNS="http://wtp" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAllFilmData" qname="operNS:getAllFilmData" returnQName="retNS:getAllFilmDataReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:format" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://wtp" xmlns:retNS="http://wtp" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="searchFilmData" qname="operNS:searchFilmData" returnQName="retNS:searchFilmDataReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:searchStr" type="tns:string"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:format" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://wtp" xmlns:retNS="http://wtp" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFilmByID" qname="operNS:getFilmByID" returnQName="retNS:getFilmByIDReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:format" type="tns:string"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://wtp" xmlns:retNS="http://wtp" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updateFilmData" qname="operNS:updateFilmData" returnQName="retNS:updateFilmDataReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:title" type="tns:string"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:year" type="tns:int"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:director" type="tns:string"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:stars" type="tns:string"/>
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:review" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="addFilmData getFilmByID updateFilmData searchFilmData deleteFilmData getAllFilmData"/>
+
+  </service>
+</deployment>

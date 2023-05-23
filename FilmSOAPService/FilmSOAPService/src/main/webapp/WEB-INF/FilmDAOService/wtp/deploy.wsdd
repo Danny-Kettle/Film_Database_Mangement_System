@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from FilmDAOService WSDL service -->
+
+  <service name="FilmDAO" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://wtp"/>
+      <parameter name="wsdlServiceElement" value="FilmDAOService"/>
+      <parameter name="schemaQualified" value="http://wtp,http://model"/>
+      <parameter name="wsdlServicePort" value="FilmDAO"/>
+      <parameter name="className" value="wtp.FilmDAO"/>
+      <parameter name="wsdlPortType" value="FilmDAO"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://wtp" xmlns:retNS="http://wtp" xmlns:rtns="http://model" name="getLastFilm" qname="operNS:getLastFilm" returnQName="retNS:getLastFilmReturn" returnType="rtns:Film" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://wtp" xmlns:itns="http://wtp" qname="pns:films" type="tns:ArrayOf_xsd_anyType" itemQName="itns:item"/>
+      </operation>
+      <operation xmlns:operNS="http://wtp" name="updateFilm" qname="operNS:updateFilm" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://model" qname="pns:f" type="tns:Film"/>
+      </operation>
+      <operation xmlns:operNS="http://wtp" xmlns:retNS="http://wtp" xmlns:rtns="http://wtp" xmlns:tns="http://wtp" name="getAllFilms" qname="operNS:getAllFilms" returnQName="retNS:getAllFilmsReturn" returnType="rtns:ArrayOf_xsd_anyType" returnItemQName="tns:item" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://wtp" xmlns:retNS="http://wtp" xmlns:rtns="http://model" name="getFilmByID" qname="operNS:getFilmByID" returnQName="retNS:getFilmByIDReturn" returnType="rtns:Film" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://wtp" name="insertFilm" qname="operNS:insertFilm" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://model" qname="pns:f" type="tns:Film"/>
+      </operation>
+      <operation xmlns:operNS="http://wtp" name="deleteFilm" qname="operNS:deleteFilm" soapAction="">
+        <parameter xmlns:pns="http://wtp" xmlns:tns="http://model" qname="pns:film" type="tns:Film"/>
+      </operation>
+      <operation xmlns:operNS="http://wtp" xmlns:retNS="http://wtp" xmlns:rtns="http://wtp" xmlns:tns="http://wtp" name="searchFilms" qname="operNS:searchFilms" returnQName="retNS:searchFilmsReturn" returnType="rtns:ArrayOf_xsd_anyType" returnItemQName="tns:item" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" xmlns:pns="http://wtp" qname="pns:searchStr" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getAllFilms searchFilms getLastFilm getFilmByID deleteFilm updateFilm insertFilm"/>
+
+      <typeMapping xmlns:ns="http://model" qname="ns:Film" type="java:model.Film" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;deleteFilm" type="java:wtp.DeleteFilm" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;insertFilm" type="java:wtp.InsertFilm" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://wtp" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_anyType" type="java:java.lang.Object[]" innerType="cmp-ns:anyType" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;updateFilmResponse" type="java:wtp.UpdateFilmResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;getAllFilms" type="java:wtp.GetAllFilms" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;getLastFilm" type="java:wtp.GetLastFilm" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;deleteFilmResponse" type="java:wtp.DeleteFilmResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;updateFilm" type="java:wtp.UpdateFilm" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;searchFilms" type="java:wtp.SearchFilms" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;getAllFilmsResponse" type="java:wtp.GetAllFilmsResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;getFilmByIDResponse" type="java:wtp.GetFilmByIDResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;searchFilmsResponse" type="java:wtp.SearchFilmsResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;getLastFilmResponse" type="java:wtp.GetLastFilmResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;insertFilmResponse" type="java:wtp.InsertFilmResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wtp" qname="ns:&gt;getFilmByID" type="java:wtp.GetFilmByID" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
