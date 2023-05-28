@@ -1,0 +1,24 @@
+@import './partials/variables';
+@import './partials/typography';
+
+html,body,#root{
+    min-height: 100vh;
+}
+
+#root{
+    background-color: $grey;
+    padding-top: 5rem;
+}
+
+main{
+    background-color: white;
+}
+
+#instructionList{
+    list-style: none;
+    padding: 0;
+    li::before{
+        content: "👉";
+        padding-right: 10px;
+    }
+}
