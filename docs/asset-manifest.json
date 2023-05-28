@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "Film_Database_Management_System/static/css/main.607efe6c.css",
-    "main.js": "Film_Database_Management_System/static/js/main.14b26a61.js",
-    "index.html": "Film_Database_Management_System/index.html",
-    "main.607efe6c.css.map": "Film_Database_Management_System/static/css/main.607efe6c.css.map",
-    "main.14b26a61.js.map": "Film_Database_Management_System/static/js/main.14b26a61.js.map"
+    "main.css": "Film_Database_Mangement_System/static/css/main.607efe6c.css",
+    "main.js": "Film_Database_Mangement_System/static/js/main.14b26a61.js",
+    "index.html": "Film_Database_Mangement_System/index.html",
+    "main.607efe6c.css.map": "Film_Database_Mangement_System/static/css/main.607efe6c.css.map",
+    "main.14b26a61.js.map": "Film_Database_Mangement_System/static/js/main.14b26a61.js.map"
   },
   "entrypoints": [
-    "Film_Database_Management_System/static/css/main.607efe6c.css",
-    "Film_Database_Management_System/static/js/main.14b26a61.js"
+    "Film_Database_Mangement_System/static/css/main.607efe6c.css",
+    "Film_Database_Mangement_System/static/js/main.14b26a61.js"
   ]
 }
