@@ -1,6 +1,7 @@
 {
   "name": "film-restful-0.2",
   "version": "0.1.0",
+  "homepage": "/Film_Database_Mangement_System/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
